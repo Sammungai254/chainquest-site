@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+:root {
+  --bg-primary: #080e1e;
+  --bg-secondary: #0d1628;
+  --bg-card: #0f1d35;
+  --gold: #f5c218;
+  --gold-dark: #d4a217;
+  --gold-light: #fad857;
+  --blue-accent: #1e4d8c;
+  --blue-glow: #2563eb;
+  --text-primary: #f0f4ff;
+  --text-secondary: #8fa3c8;
+  --border-color: rgba(245, 194, 24, 0.15);
+}
+
+@theme inline {
+  --color-background: var(--bg-primary);
+  --color-foreground: var(--text-primary);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gold-dark);
+  border-radius: 3px;
+}
+
+/* Gold gradient text */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #f5c218 0%, #fad857 50%, #d4a217 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Blue-gold gradient */
+.text-gradient-blue-gold {
+  background: linear-gradient(135deg, #60a5fa 0%, #f5c218 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glowing border */
+.border-glow {
+  border: 1px solid rgba(245, 194, 24, 0.3);
+  box-shadow: 0 0 15px rgba(245, 194, 24, 0.1), inset 0 0 15px rgba(245, 194, 24, 0.03);
+}
+
+.border-glow:hover {
+  border-color: rgba(245, 194, 24, 0.6);
+  box-shadow: 0 0 25px rgba(245, 194, 24, 0.2), inset 0 0 20px rgba(245, 194, 24, 0.05);
+}
+
+/* Animated gradient background */
+.hero-bg {
+  background: radial-gradient(ellipse at 20% 50%, rgba(30, 77, 140, 0.15) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 20%, rgba(245, 194, 24, 0.05) 0%, transparent 50%),
+              radial-gradient(ellipse at 50% 100%, rgba(37, 99, 235, 0.1) 0%, transparent 60%),
+              #080e1e;
+}
+
+/* Grid pattern overlay */
+.grid-overlay {
+  background-image: linear-gradient(rgba(30, 77, 140, 0.07) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(30, 77, 140, 0.07) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Shimmer animation */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(245, 194, 24, 0.15), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Pulse glow */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 10px rgba(245, 194, 24, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(245, 194, 24, 0.6), 0 0 60px rgba(245, 194, 24, 0.2); }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Chain link animation */
+@keyframes chain-move {
+  0% { stroke-dashoffset: 1000; }
+  100% { stroke-dashoffset: 0; }
+}
+
+/* Section transitions */
+.section-fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.section-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Card hover effect */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+}
+
+/* Noise texture overlay */
+.noise::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.03;
+}
