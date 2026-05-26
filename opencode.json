@@ -6,7 +6,7 @@
       "url": "https://mcp.sevalla.com/mcp",
       "oauth": false,
       "headers": {
-        "Authorization": "Bearer svl_c3f5fc03afd20dd9ef8fc9475ddb36d1fe8eb4b09a30d493173ec2edcccdd92c"
+        "Authorization": "Bearer"
       }
     }
   }
