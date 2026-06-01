@@ -99,13 +99,17 @@ export default function About() {
               </div>
             </div>
 
-            {/* Floating stat cards */}
+            {/* Floating stat cards — desktop only.
+                On mobile they overflow the card edge (negative offsets) and get
+                clipped by the section's overflow-hidden, producing a visible
+                cut-off bug. The same stats already appear inline in the bio
+                highlights, so hiding here on mobile is purely cosmetic. */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="absolute -top-6 -right-4 bg-[#0f1d35] border border-[#f5c218]/20 rounded-xl p-4 shadow-xl"
+              className="hidden lg:block absolute -top-6 -right-4 bg-[#0f1d35] border border-[#f5c218]/20 rounded-xl p-4 shadow-xl"
             >
               <div className="text-2xl font-black text-[#f5c218]">50+</div>
               <div className="text-[#8fa3c8] text-xs">Happy Clients</div>
@@ -116,7 +120,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5 }}
-              className="absolute -bottom-4 -left-4 bg-[#0f1d35] border border-[#2563eb]/30 rounded-xl p-4 shadow-xl"
+              className="hidden lg:block absolute -bottom-4 -left-4 bg-[#0f1d35] border border-[#2563eb]/30 rounded-xl p-4 shadow-xl"
             >
               <div className="text-2xl font-black text-[#60a5fa]">3+</div>
               <div className="text-[#8fa3c8] text-xs">Years Experience</div>
