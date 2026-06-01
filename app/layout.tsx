@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
 
@@ -78,6 +79,9 @@ export const metadata: Metadata = {
     images: ["/images/trainer.jpg"],
   },
   category: "technology",
+  other: {
+    "google-site-verification": process.env.NEXT_PUBLIC_GSC_VERIFICATION || "",
+  },
 };
 
 export const viewport: Viewport = {
@@ -200,6 +204,9 @@ const servicesSchema = {
   ],
 };
 
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+const ENABLE_GA = process.env.NODE_ENV === "production" && Boolean(GA_ID);
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -233,6 +240,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }}
         />
       </body>
+      {/* Only load GA4 in production with a configured Measurement ID,
+          so dev requests don't pollute analytics. */}
+      {ENABLE_GA && <GoogleAnalytics gaId={GA_ID!} />}
     </html>
   );
 }
