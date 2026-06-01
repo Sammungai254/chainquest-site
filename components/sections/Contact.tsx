@@ -18,8 +18,8 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "info@chainquestke.com",
-    href: "mailto:info@chainquestke.com",
+    value: "info@chainquest.co.ke",
+    href: "mailto:info@chainquest.co.ke",
     color: "blue",
   },
   {
@@ -61,6 +61,7 @@ interface ContactForm {
 export default function Contact() {
   const [form, setForm] = useState<ContactForm>({ name: "", email: "", subject: "", message: "" });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -71,20 +72,24 @@ export default function Contact() {
     if (!form.name || !form.email || !form.message) return;
 
     setStatus("loading");
+    setErrorMessage("");
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
+      const data = await res.json().catch(() => ({}));
       if (res.ok) {
         setStatus("success");
         setForm({ name: "", email: "", subject: "", message: "" });
       } else {
         setStatus("error");
+        setErrorMessage(data?.error || "Something went wrong. Please try again.");
       }
     } catch {
       setStatus("error");
+      setErrorMessage("Network error. Please check your connection and try again.");
     }
   };
 
@@ -183,9 +188,9 @@ export default function Contact() {
                 <div className="w-16 h-16 rounded-full bg-[#f5c218]/10 border border-[#f5c218]/30 flex items-center justify-center mb-4">
                   <CheckCircle className="w-8 h-8 text-[#f5c218]" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">Message Sent!</h3>
+                <h3 className="text-xl font-bold text-white mb-2">Message sent!</h3>
                 <p className="text-[#8fa3c8] text-sm mb-6">
-                  Thanks for reaching out! We&apos;ll get back to you within 24 hours.
+                  We&apos;ll respond within 24 hours.
                 </p>
                 <Button variant="outline" onClick={() => setStatus("idle")}>
                   Send Another Message
@@ -248,7 +253,7 @@ export default function Contact() {
 
                 {status === "error" && (
                   <p className="text-red-400 text-sm text-center">
-                    Something went wrong. Please try again.
+                    {errorMessage || "Something went wrong. Please try again."}
                   </p>
                 )}
 
