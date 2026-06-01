@@ -76,7 +76,7 @@ export default function Hero() {
             >
               <span className="w-2 h-2 bg-[#f5c218] rounded-full animate-pulse" />
               <span className="text-[#f5c218] text-sm font-semibold tracking-wide">
-                Kenya&apos;s Premier Digital Innovation Hub
+                Nairobi-Based Digital Services Firm
               </span>
             </motion.div>
 
@@ -87,21 +87,17 @@ export default function Hero() {
               transition={{ duration: 0.7, delay: 0.1 }}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-black leading-[1.1] tracking-tight mb-6"
             >
-              Empowering{" "}
-              <span className="text-gradient-gold">Digital Growth</span>
-              <br />
-              through{" "}
+              Digital Solutions{" "}
               <span className="relative inline-block">
-                <span className="text-white">Web, AI</span>
+                <span className="text-white">Built for the</span>
                 <motion.span
                   className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-[#f5c218] to-transparent"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ duration: 0.8, delay: 0.9 }}
                 />
-              </span>
-              {" & "}
-              <span className="text-gradient-blue-gold">Blockchain</span>
+              </span>{" "}
+              <span className="text-gradient-blue-gold">African Market</span>
             </motion.h1>
 
             {/* Sub-headline */}
@@ -111,8 +107,9 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-[#8fa3c8] text-lg md:text-xl leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0"
             >
-              Build your digital future with expert-led training, cutting-edge web solutions, and
-              smart crypto & AI strategies tailored for Kenya&apos;s growing tech ecosystem.
+              We help individuals and businesses grow through practical web development,
+              blockchain education, GIS solutions, and AI-powered tools — grounded in real
+              experience and built for local needs.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -125,18 +122,18 @@ export default function Hero() {
               <Button
                 variant="primary"
                 size="lg"
-                onClick={() => scrollTo("booking")}
+                onClick={() => scrollTo("services")}
               >
-                Book a Session
-                <Zap className="w-5 h-5" />
+                Explore Our Services
+                <ChevronDown className="w-5 h-5" />
               </Button>
               <Button
                 variant="outline"
                 size="lg"
-                onClick={() => scrollTo("services")}
+                onClick={() => scrollTo("contact")}
               >
-                View Services
-                <ChevronDown className="w-5 h-5" />
+                Get in Touch
+                <Zap className="w-5 h-5" />
               </Button>
             </motion.div>
 
@@ -148,9 +145,9 @@ export default function Hero() {
               className="mt-12 flex gap-8 justify-center lg:justify-start"
             >
               {[
-                { value: "50+", label: "Clients Served" },
-                { value: "3+", label: "Years Experience" },
-                { value: "100%", label: "Satisfaction Rate" },
+                { value: "40+", label: "Projects Delivered" },
+                { value: "5+", label: "Years in Tech" },
+                { value: "Kenya", label: "& East Africa" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center lg:text-left">
                   <div className="text-2xl font-black text-[#f5c218]">{stat.value}</div>
