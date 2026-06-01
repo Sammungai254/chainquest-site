@@ -210,7 +210,13 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
-      <body className="min-h-screen bg-[#080e1e] text-[#f0f4ff]">
+      <body
+        className="min-h-screen bg-[#080e1e] text-[#f0f4ff]"
+        // Browser extensions (Grammarly, wallet extensions, etc.) inject
+        // attributes on <body> before React hydrates. Suppressing the
+        // hydration warning here is the React-team-recommended fix.
+        suppressHydrationWarning
+      >
         {children}
         <WhatsAppFloat />
         <script
