@@ -143,7 +143,7 @@ export default function Booking() {
 
             {/* WhatsApp CTA */}
             <motion.a
-              href="https://wa.me/254700000000?text=Hi%20ChainQuest%20Ke%2C%20I%27d%20like%20to%20book%20a%20session"
+              href="https://wa.me/254745381960?text=Hi%20ChainQuest%20Ke%2C%20I%27d%20like%20to%20book%20a%20session"
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, x: -20 }}

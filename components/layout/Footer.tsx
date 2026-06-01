@@ -25,7 +25,7 @@ const socials = [
   { icon: XIcon, href: "https://twitter.com/chainquestke", label: "Twitter" },
   { icon: LinkedInIcon, href: "https://linkedin.com/company/chainquestke", label: "LinkedIn" },
   { icon: GitHubIcon, href: "https://github.com/chainquestke", label: "GitHub" },
-  { icon: WhatsAppIcon, href: "https://wa.me/254700000000", label: "WhatsApp" },
+  { icon: WhatsAppIcon, href: "https://wa.me/254745381960", label: "WhatsApp" },
 ];
 
 export default function Footer() {
@@ -65,14 +65,14 @@ export default function Footer() {
             {/* Contact info */}
             <div className="space-y-2">
               <a
-                href="mailto:info@chainquestke.com"
+                href="mailto:info@chainquest.co.ke"
                 className="flex items-center gap-2 text-[#8fa3c8] hover:text-[#f5c218] text-sm transition-colors group"
               >
                 <Mail className="w-4 h-4 group-hover:text-[#f5c218]" />
-                info@chainquestke.com
+                info@chainquest.co.ke
               </a>
               <a
-                href="tel:+254700000000"
+                href="tel:+254745381960"
                 className="flex items-center gap-2 text-[#8fa3c8] hover:text-[#f5c218] text-sm transition-colors group"
               >
                 <Phone className="w-4 h-4 group-hover:text-[#f5c218]" />
