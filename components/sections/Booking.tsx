@@ -232,7 +232,7 @@ export default function Booking() {
                       name="phone"
                       value={form.phone}
                       onChange={handleChange}
-                      placeholder="+254 745 381 960"
+                      placeholder="+254 700000000"
                       className={inputClass("phone")}
                     />
                   </div>
@@ -309,7 +309,7 @@ export default function Booking() {
                 {status === "error" && (
                   <p className="text-red-400 text-sm text-center">
                     Something went wrong. Please try again or{" "}
-                    <a href="https://wa.me/254700000000" className="text-[#f5c218] hover:underline">
+                    <a href="https://wa.me/254745381960" className="text-[#f5c218] hover:underline">
                       WhatsApp us directly
                     </a>.
                   </p>
