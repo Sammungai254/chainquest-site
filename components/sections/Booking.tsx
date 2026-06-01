@@ -22,9 +22,9 @@ interface FormData {
   email: string;
   phone: string;
   service: string;
-  date: string;
-  time: string;
-  message: string;
+  preferredDate: string;
+  preferredTime: string;
+  goals: string;
 }
 
 const initialForm: FormData = {
@@ -32,15 +32,16 @@ const initialForm: FormData = {
   email: "",
   phone: "",
   service: "",
-  date: "",
-  time: "",
-  message: "",
+  preferredDate: "",
+  preferredTime: "",
+  goals: "",
 };
 
 export default function Booking() {
   const [form, setForm] = useState<FormData>(initialForm);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errors, setErrors] = useState<Partial<FormData>>({});
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const validate = (): boolean => {
     const newErrors: Partial<FormData> = {};
@@ -48,7 +49,6 @@ export default function Booking() {
     if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
       newErrors.email = "Valid email is required";
     if (!form.service) newErrors.service = "Please select a service";
-    if (!form.date) newErrors.date = "Please choose a date";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -68,20 +68,24 @@ export default function Booking() {
     if (!validate()) return;
 
     setStatus("loading");
+    setErrorMessage("");
     try {
       const res = await fetch("/api/booking", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
+      const data = await res.json().catch(() => ({}));
       if (res.ok) {
         setStatus("success");
         setForm(initialForm);
       } else {
         setStatus("error");
+        setErrorMessage(data?.error || "Something went wrong. Please try again.");
       }
     } catch {
       setStatus("error");
+      setErrorMessage("Network error. Please check your connection and try again.");
     }
   };
 
@@ -180,9 +184,9 @@ export default function Booking() {
                 <div className="w-16 h-16 rounded-full bg-[#f5c218]/10 border border-[#f5c218]/30 flex items-center justify-center mb-4">
                   <CheckCircle className="w-8 h-8 text-[#f5c218]" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">Booking Received!</h3>
+                <h3 className="text-xl font-bold text-white mb-2">Booking received!</h3>
                 <p className="text-[#8fa3c8] text-sm mb-6 max-w-sm">
-                  Thank you! We&apos;ve received your booking request and will confirm within 24 hours via email or WhatsApp.
+                  Check your email for confirmation. Samuel will be in touch within 24 hours via WhatsApp or email.
                 </p>
                 <Button variant="outline" onClick={() => setStatus("idle")}>
                   Submit Another Request
@@ -258,27 +262,26 @@ export default function Booking() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-[#8fa3c8] text-xs font-medium mb-2">
-                      Preferred Date <span className="text-[#f5c218]">*</span>
+                      Preferred Date
                     </label>
                     <input
-                      name="date"
+                      name="preferredDate"
                       type="date"
-                      value={form.date}
+                      value={form.preferredDate}
                       onChange={handleChange}
                       min={new Date().toISOString().split("T")[0]}
-                      className={`${inputClass("date")} [color-scheme:dark]`}
+                      className={`${inputClass("preferredDate")} [color-scheme:dark]`}
                     />
-                    {errors.date && <p className="text-red-400 text-xs mt-1">{errors.date}</p>}
                   </div>
                   <div>
                     <label className="block text-[#8fa3c8] text-xs font-medium mb-2">
                       Preferred Time
                     </label>
                     <select
-                      name="time"
-                      value={form.time}
+                      name="preferredTime"
+                      value={form.preferredTime}
                       onChange={handleChange}
-                      className={`${inputClass("time")} cursor-pointer`}
+                      className={`${inputClass("preferredTime")} cursor-pointer`}
                     >
                       <option value="">Any time</option>
                       <option value="8:00 AM">8:00 AM</option>
@@ -297,18 +300,18 @@ export default function Booking() {
                     Tell us about your goals
                   </label>
                   <textarea
-                    name="message"
-                    value={form.message}
+                    name="goals"
+                    value={form.goals}
                     onChange={handleChange}
                     rows={4}
                     placeholder="Describe what you're looking to achieve and any specific questions you have..."
-                    className={`${inputClass("message")} resize-none`}
+                    className={`${inputClass("goals")} resize-none`}
                   />
                 </div>
 
                 {status === "error" && (
                   <p className="text-red-400 text-sm text-center">
-                    Something went wrong. Please try again or{" "}
+                    {errorMessage || "Something went wrong. Please try again"} or{" "}
                     <a href="https://wa.me/254745381960" className="text-[#f5c218] hover:underline">
                       WhatsApp us directly
                     </a>.
