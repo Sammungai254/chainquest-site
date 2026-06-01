@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
 
 const SITE_URL = "https://chainquest.co.ke";
 
@@ -211,6 +212,7 @@ export default function RootLayout({
     >
       <body className="min-h-screen bg-[#080e1e] text-[#f0f4ff]">
         {children}
+        <WhatsAppFloat />
         <script
           type="application/ld+json"
           // JSON.stringify safely escapes the schema; no user input is injected here.
