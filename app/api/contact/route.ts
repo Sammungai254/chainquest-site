@@ -22,12 +22,12 @@ const escapeHtml = (str: string) =>
  * POST /api/contact
  *
  * Handles contact form submissions:
- *   1. Sends a notification email to CONTACT_EMAIL (info@chainquest.co.ke)
+ *   1. Sends a notification email to CONTACT_EMAIL (mungai.owino@chainquest.co.ke)
  *   2. Sends a confirmation email back to the submitter
  *
  * Required env vars:
  *   - RESEND_API_KEY   Resend API key
- *   - CONTACT_EMAIL    Destination inbox for notifications (e.g. info@chainquest.co.ke)
+ *   - CONTACT_EMAIL    Destination inbox for notifications (e.g. mungai.owino@chainquest.co.ke)
  */
 export async function POST(req: NextRequest) {
   try {

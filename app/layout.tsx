@@ -142,7 +142,7 @@ const localBusinessSchema = {
   logo: `${SITE_URL}/images/trainer.jpg`,
   description:
     "Kenya's leading crypto educator and Web3 consultant. Blockchain training, DeFi, NFT education, AI solutions, and web development in Nairobi.",
-  email: "info@chainquest.co.ke",
+  email: "mungai.owino@chainquest.co.ke",
   telephone: "+254745381960",
   priceRange: "$$",
   address: {

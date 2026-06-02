@@ -65,11 +65,11 @@ export default function Footer() {
             {/* Contact info */}
             <div className="space-y-2">
               <a
-                href="mailto:info@chainquest.co.ke"
+                href="mailto:mungai.owino@chainquest.co.ke"
                 className="flex items-center gap-2 text-[#8fa3c8] hover:text-[#f5c218] text-sm transition-colors group"
               >
                 <Mail className="w-4 h-4 group-hover:text-[#f5c218]" />
-                info@chainquest.co.ke
+                mungai.owino@chainquest.co.ke
               </a>
               <a
                 href="tel:+254745381960"

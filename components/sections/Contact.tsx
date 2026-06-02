@@ -18,8 +18,8 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "info@chainquest.co.ke",
-    href: "mailto:info@chainquest.co.ke",
+    value: "mungai.owino@chainquest.co.ke",
+    href: "mailto:mungai.owino@chainquest.co.ke",
     color: "blue",
   },
   {
