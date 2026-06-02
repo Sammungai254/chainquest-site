@@ -41,6 +41,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: SITE_URL,
   },
+  icons: {
+    icon: [{ url: "/vercel.svg", type: "image/svg+xml" }],
+    shortcut: "/vercel.svg",
+    apple: "/vercel.svg",
+  },
   robots: {
     index: true,
     follow: true,

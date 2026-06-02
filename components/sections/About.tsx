@@ -33,9 +33,10 @@ const expertise = [
 ];
 
 const highlights = [
-  "3+ years in blockchain education & trading",
+
+  "5+ years in blockchain education & trading",
   "50+ clients across Kenya & East Africa",
-  "Expert in React, Next.js & Node.js",
+  "Expert in React, Next.js & Node.js, django, Python, Solidity, DRF",
   "Certified AI integration specialist",
   "Passionate about financial freedom through tech",
 ];
@@ -55,7 +56,7 @@ export default function About() {
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#f5c218]/3 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-14 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
           {/* Left: Image + Stats */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -142,15 +143,17 @@ export default function About() {
               centered={false}
             />
 
-            <p className="text-[#8fa3c8] leading-relaxed mb-6 -mt-6">
+            <p className="text-[#8fa3c8] leading-relaxed mb-6">
               I&apos;m a full-stack developer, blockchain educator, and digital entrepreneur passionate about
               making cutting-edge technology accessible to everyone in Africa. My mission is to help
               individuals and businesses leverage Web3, AI, and modern development to unlock new revenue
               streams and build lasting digital legacies.
             </p>
 
-            {/* Expertise grid */}
-            <div className="grid grid-cols-2 gap-3 mb-8">
+            {/* Expertise grid — single column on small phones so the labels and
+                descriptions get room to breathe instead of crushing into 2 cramped
+                columns. Goes back to 2-col from sm: upward. */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
               {expertise.map(({ icon: Icon, title, description, color }) => (
                 <motion.div
                   key={title}
