@@ -9,6 +9,8 @@ import {
   Briefcase,
   ArrowRight,
   Sparkles,
+  Map,
+  Users,
 } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
@@ -25,6 +27,16 @@ const services = [
     popular: false,
   },
   {
+    icon: Map,
+    title: "GIS & Spatial Data Solutions",
+    tagline: "Mapping & Spatial Analysis",
+    description:
+      "Geospatial data processing, mapping, and spatial analysis for land, infrastructure, and business use cases. Built with industry-standard tools and integrated into web platforms where needed.",
+    features: ["GIS", "PostGIS", "Spatial Analysis", "Land Data", "Mapping"],
+    color: "green",
+    popular: false,
+  },
+  {
     icon: Bitcoin,
     title: "Crypto Education & Strategy",
     tagline: "DeFi, NFTs & Trading",
@@ -33,6 +45,16 @@ const services = [
     features: ["Trading Strategies", "DeFi Protocols", "NFT Guidance", "Risk Management"],
     color: "gold",
     popular: true,
+  },
+  {
+    icon: Users,
+    title: "Crypto Community Management",
+    tagline: "Education-First Community Growth",
+    description:
+      "Support for building and managing a crypto-focused community. Includes content planning, member education, and structured engagement — suited for projects that want to grow an informed, active audience.",
+    features: ["Community Building", "Telegram / Discord", "Education", "Trading Guidance"],
+    color: "orange",
+    popular: false,
   },
   {
     icon: Bot,

@@ -60,7 +60,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-[#8fa3c8] text-sm leading-relaxed mb-5">
-              Empowering digital growth through Web, AI & Blockchain. Your trusted partner for the digital future.
+              Practical digital solutions for businesses and individuals across Kenya and East Africa.
             </p>
             {/* Contact info */}
             <div className="space-y-2">
@@ -125,7 +125,7 @@ export default function Footer() {
               ))}
             </div>
             <p className="text-[#8fa3c8] text-xs leading-relaxed">
-              Follow us for the latest updates in blockchain, AI, and digital innovation in Kenya.
+              Follow ChainQuest Ke for updates on web development, GIS, blockchain, and AI work in Kenya.
             </p>
           </div>
         </div>

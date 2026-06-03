@@ -1,11 +1,39 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Globe, Bitcoin, Bot, Tag } from "lucide-react";
+import { ExternalLink, Globe, Bitcoin, Bot, Tag, Building2 } from "lucide-react";
 import { GitHubIcon } from "@/components/ui/SocialIcons";
 import SectionHeading from "@/components/ui/SectionHeading";
 
 const projects = [
+  {
+    id: 101,
+    category: "Business Systems",
+    icon: Building2,
+    title: "Corporate Travel Management System",
+    description:
+      "A web-based system for managing employee travel requests, approvals, itineraries, and expense tracking. Built to replace manual processes and reduce administrative overhead for mid-sized companies.",
+    stack: ["Django", "DRF", "React", "PostgreSQL"],
+    color: "blue",
+    status: "Deployed",
+    demoUrl: "#",
+    githubUrl: "#",
+    image: null,
+  },
+  {
+    id: 102,
+    category: "Business Systems",
+    icon: Building2,
+    title: "Internal Requisition Management System",
+    description:
+      "A structured requisition and approval workflow system allowing staff to raise purchase requests, route them through department heads, and track fulfilment — reducing paperwork and approval delays.",
+    stack: ["Django", "React", "REST APIs", "PostgreSQL"],
+    color: "green",
+    status: "Deployed",
+    demoUrl: "#",
+    githubUrl: "#",
+    image: null,
+  },
   {
     id: 1,
     category: "Web",
@@ -140,7 +168,7 @@ const colorMap: Record<
   },
 };
 
-const categories = ["All", "Web", "Crypto", "AI"];
+const categories = ["All", "Business Systems", "Web", "Crypto", "AI"];
 
 import { useState } from "react";
 

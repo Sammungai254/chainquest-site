@@ -1,44 +1,67 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code2, Bitcoin, Bot, Building2, CheckCircle } from "lucide-react";
+import { Code2, Map, Server, Bitcoin } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 
+// Four-card overview of what ChainQuest Ke offers. Kept generic enough that
+// each card maps to a service category in #services without duplicating copy.
 const expertise = [
   {
     icon: Code2,
-    title: "Web Development",
-    description: "Full-stack solutions from landing pages to complex web applications",
+    title: "Software Development",
+    description: "Production web platforms, business systems, and APIs built with Django, Next.js, and PostgreSQL.",
     color: "blue",
   },
   {
+    icon: Map,
+    title: "GIS & Spatial Data",
+    description: "Geospatial processing, mapping, and spatial analysis for land, infrastructure, and business use cases.",
+    color: "green",
+  },
+  {
     icon: Bitcoin,
-    title: "Cryptocurrency & Trading",
-    description: "DeFi, NFTs, trading strategies, and blockchain investment education",
+    title: "Crypto Education",
+    description: "Practical, no-hype guidance on blockchain and trading — for individuals and community groups.",
     color: "gold",
   },
   {
-    icon: Bot,
-    title: "AI Tools & Automation",
-    description: "Integrating AI into business workflows and automating repetitive tasks",
+    icon: Server,
+    title: "AI Integration",
+    description: "Embedding AI tools into existing workflows so teams spend less time on repetitive work.",
     color: "purple",
-  },
-  {
-    icon: Building2,
-    title: "Business Transformation",
-    description: "Digitizing traditional businesses and building scalable online presence",
-    color: "green",
   },
 ];
 
-const highlights = [
+// Tools & technologies used day-to-day. Order roughly: backend → frontend →
+// data/GIS → blockchain. Shown as plain pills below the bio.
+const techStack = [
+  "Python",
+  "Django",
+  "DRF",
+  "React",
+  "Next.js",
+  "PostgreSQL",
+  "PostGIS",
+  "GIS / Spatial Data",
+  "REST APIs",
+  "Web3.js",
+  "Solidity",
+];
 
-  "5+ years in blockchain education & trading",
-  "50+ clients across Kenya & East Africa",
-  "Expert in React, Next.js & Node.js, django, Python, Solidity, DRF",
-  "Certified AI integration specialist",
-  "Passionate about financial freedom through tech",
+// Skill / capability tags — broader than the tech stack; describe what we
+// actually do, not what we use.
+const skillTags = [
+  "Software Development",
+  "GIS & Mapping",
+  "Backend APIs",
+  "Business Systems",
+  "Crypto Education",
+  "Blockchain",
+  "AI Integration",
+  "DeFi & Trading",
+  "Community Management",
 ];
 
 const colorMap: Record<string, string> = {
@@ -91,11 +114,11 @@ export default function About() {
               <div className="p-6">
                 <h3 className="text-xl font-bold text-white mb-1">Samuel — ChainQuest Ke</h3>
                 <p className="text-[#f5c218] text-sm font-medium mb-3">
-                  Developer · Educator · Digital Entrepreneur
+                  Software Developer · GIS Specialist · Crypto Educator
                 </p>
                 <p className="text-[#8fa3c8] text-sm leading-relaxed">
-                  Based in Nairobi, Kenya — bridging the gap between traditional business and the
-                  emerging digital economy through hands-on training and expert-built solutions.
+                  Based in Nairobi, Kenya — building practical digital solutions for businesses
+                  and individuals across Kenya and East Africa.
                 </p>
               </div>
             </div>
@@ -136,18 +159,22 @@ export default function About() {
             transition={{ duration: 0.7 }}
           >
             <SectionHeading
-              badge="About Me"
-              title="The Developer &"
-              highlight=" Educator"
+              badge="About"
+              title="A Nairobi Digital"
+              highlight=" Services Firm"
               subtitle=""
               centered={false}
             />
 
             <p className="text-[#8fa3c8] leading-relaxed mb-6">
-              I&apos;m a full-stack developer, blockchain educator, and digital entrepreneur passionate about
-              making cutting-edge technology accessible to everyone in Africa. My mission is to help
-              individuals and businesses leverage Web3, AI, and modern development to unlock new revenue
-              streams and build lasting digital legacies.
+              ChainQuest Ke is a Nairobi-based digital services firm offering web development,
+              GIS and spatial data solutions, web3 & crypto education, and AI integration. The
+              business is led by Samuel, a software and GIS developer with hands-on experience
+              building production systems — including enterprise-level government platforms, a
+              corporate travel management system, and an internal requisition system for
+              streamlining company procurement and approval workflows. Samuel also runs a
+              crypto education community helping beginners navigate blockchain and trading
+              with practical, no-hype guidance.
             </p>
 
             {/* Expertise grid — single column on small phones so the labels and
@@ -167,19 +194,43 @@ export default function About() {
               ))}
             </div>
 
-            {/* Highlights */}
-            <ul className="space-y-2 mb-8">
-              {highlights.map((item) => (
-                <li key={item} className="flex items-start gap-2 text-[#8fa3c8] text-sm">
-                  <CheckCircle className="w-4 h-4 text-[#f5c218] mt-0.5 flex-shrink-0" />
-                  {item}
-                </li>
-              ))}
-            </ul>
+            {/* Tech stack pills — the actual tools we use day-to-day. */}
+            <div className="mb-6">
+              <h4 className="text-[#f5c218] text-xs font-semibold tracking-widest uppercase mb-3">
+                Tech Stack
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {techStack.map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-3 py-1 rounded-full text-xs font-medium bg-[#0f1d35] border border-[#f5c218]/20 text-[#f0f4ff]"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Skill / capability tags — broader than the stack; what we do. */}
+            <div className="mb-8">
+              <h4 className="text-[#f5c218] text-xs font-semibold tracking-widest uppercase mb-3">
+                Skills
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {skillTags.map((skill) => (
+                  <span
+                    key={skill}
+                    className="px-3 py-1 rounded-full text-xs font-medium bg-[#f5c218]/10 border border-[#f5c218]/30 text-[#f5c218]"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
 
             <div className="flex gap-3">
-              <Button variant="primary" onClick={() => document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" })}>
-                Work With Me
+              <Button variant="primary" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>
+                Get in Touch
               </Button>
               <Button variant="outline" onClick={() => document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" })}>
                 View Work
