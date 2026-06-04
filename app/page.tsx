@@ -6,6 +6,8 @@ import Services from "@/components/sections/Services";
 import Pricing from "@/components/sections/Pricing";
 import Booking from "@/components/sections/Booking";
 import Portfolio from "@/components/sections/Portfolio";
+import Insights from "@/components/sections/Insights";
+import Community from "@/components/sections/Community";
 import Testimonials from "@/components/sections/Testimonials";
 import Contact from "@/components/sections/Contact";
 
@@ -18,6 +20,8 @@ export default function Home() {
       <Services />
       <Pricing />
       <Portfolio />
+      <Insights />
+      <Community />
       <Testimonials />
       <Booking />
       <Contact />

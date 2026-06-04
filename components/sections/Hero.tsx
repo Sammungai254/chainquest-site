@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ChevronDown, Zap, Shield, TrendingUp } from "lucide-react";
+import { ChevronDown, Zap, Shield, TrendingUp, Users } from "lucide-react";
 import Button from "@/components/ui/Button";
+import { WHATSAPP_COMMUNITY_URL } from "@/lib/constants";
 
 const floatingBadges = [
   { icon: Zap, label: "AI Solutions", color: "blue", delay: 0.2 },
@@ -136,6 +137,31 @@ export default function Hero() {
                 <Zap className="w-5 h-5" />
               </Button>
             </motion.div>
+
+            {/* Community pill — quiet, discoverable CTA */}
+            <motion.a
+              href={WHATSAPP_COMMUNITY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              whileHover={{ scale: 1.02 }}
+              className="group mt-5 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#25D366]/10 border border-[#25D366]/25 hover:bg-[#25D366]/15 hover:border-[#25D366]/45 transition-all"
+              aria-label="Join the ChainQuest WhatsApp Community"
+            >
+              <span className="relative flex w-2 h-2">
+                <span className="absolute inline-flex w-full h-full rounded-full bg-[#25D366] opacity-75 animate-ping" />
+                <span className="relative inline-flex w-2 h-2 rounded-full bg-[#25D366]" />
+              </span>
+              <Users className="w-3.5 h-3.5 text-[#25D366]" />
+              <span className="text-[#f0f4ff] text-xs sm:text-sm font-medium">
+                Join our free WhatsApp community
+              </span>
+              <span className="text-[#25D366] text-xs font-bold group-hover:translate-x-0.5 transition-transform">
+                →
+              </span>
+            </motion.a>
 
             {/* Stats row */}
             <motion.div

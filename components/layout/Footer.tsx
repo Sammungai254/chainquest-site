@@ -1,8 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, Phone, ArrowUp } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
+import { Mail, Phone, ArrowUp, ArrowRight } from "lucide-react";
 import { XIcon, GitHubIcon, LinkedInIcon, WhatsAppIcon } from "@/components/ui/SocialIcons";
+import { WHATSAPP_COMMUNITY_URL, WHATSAPP_DIRECT_URL } from "@/lib/constants";
 
 const footerLinks = {
   Services: [
@@ -16,6 +18,7 @@ const footerLinks = {
     { label: "About", href: "#about" },
     { label: "Portfolio", href: "#portfolio" },
     { label: "Pricing", href: "#pricing" },
+    { label: "Community", href: "#community" },
     { label: "Testimonials", href: "#testimonials" },
     { label: "Contact", href: "#contact" },
   ],
@@ -25,16 +28,24 @@ const socials = [
   { icon: XIcon, href: "https://twitter.com/chainquestke", label: "Twitter" },
   { icon: LinkedInIcon, href: "https://linkedin.com/company/chainquestke", label: "LinkedIn" },
   { icon: GitHubIcon, href: "https://github.com/chainquestke", label: "GitHub" },
-  { icon: WhatsAppIcon, href: "https://wa.me/254745381960", label: "WhatsApp" },
+  { icon: WhatsAppIcon, href: WHATSAPP_DIRECT_URL, label: "WhatsApp" },
 ];
 
 export default function Footer() {
+  const pathname = usePathname();
+  const router = useRouter();
+  const isHome = pathname === "/";
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleNavClick = (href: string) => {
     const id = href.replace("#", "");
+    if (!isHome) {
+      router.push(`/${href}`);
+      return;
+    }
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
@@ -124,9 +135,33 @@ export default function Footer() {
                 </motion.a>
               ))}
             </div>
-            <p className="text-[#8fa3c8] text-xs leading-relaxed">
+            <p className="text-[#8fa3c8] text-xs leading-relaxed mb-4">
               Follow ChainQuest Ke for updates on web development, GIS, blockchain, and AI work in Kenya.
             </p>
+
+            {/* Community CTA */}
+            <a
+              href={WHATSAPP_COMMUNITY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center justify-between gap-2 p-3 rounded-lg bg-[#25D366]/10 border border-[#25D366]/25 hover:bg-[#25D366]/15 hover:border-[#25D366]/45 transition-all"
+              aria-label="Join the ChainQuest WhatsApp Community"
+            >
+              <div className="flex items-center gap-2.5 min-w-0">
+                <div className="w-8 h-8 rounded-md bg-[#25D366]/20 border border-[#25D366]/30 flex items-center justify-center flex-shrink-0">
+                  <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-white text-xs font-bold leading-tight">
+                    Join the Community
+                  </p>
+                  <p className="text-[#8fa3c8] text-[10px] leading-tight">
+                    Weekly classes & updates
+                  </p>
+                </div>
+              </div>
+              <ArrowRight className="w-4 h-4 text-[#25D366] group-hover:translate-x-0.5 transition-transform flex-shrink-0" />
+            </a>
           </div>
         </div>
 

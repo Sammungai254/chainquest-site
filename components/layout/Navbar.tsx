@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronRight } from "lucide-react";
 import Button from "@/components/ui/Button";
@@ -11,6 +12,7 @@ const navLinks = [
   { label: "Services", href: "#services" },
   { label: "Pricing", href: "#pricing" },
   { label: "Portfolio", href: "#portfolio" },
+  { label: "Community", href: "#community" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -18,12 +20,17 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
+  const pathname = usePathname();
+  const router = useRouter();
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      // Update active section based on scroll position
+      // Active-section tracking only matters on the homepage where the
+      // anchors actually exist. On other routes (e.g. /blog) skip it.
+      if (!isHome) return;
       const sections = navLinks.map((l) => l.href.replace("#", ""));
       for (const section of [...sections].reverse()) {
         const el = document.getElementById(section);
@@ -34,13 +41,21 @@ export default function Navbar() {
       }
     };
 
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isHome]);
 
   const handleNavClick = (href: string) => {
     setIsOpen(false);
     const id = href.replace("#", "");
+
+    if (!isHome) {
+      // Navigate to the homepage at the requested anchor.
+      router.push(`/${href}`);
+      return;
+    }
+
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
