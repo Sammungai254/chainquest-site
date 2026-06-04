@@ -146,7 +146,7 @@ export default function About() {
               transition={{ delay: 0.5 }}
               className="hidden lg:block absolute -bottom-4 -left-4 bg-[#0f1d35] border border-[#2563eb]/30 rounded-xl p-4 shadow-xl"
             >
-              <div className="text-2xl font-black text-[#60a5fa]">3+</div>
+              <div className="text-2xl font-black text-[#60a5fa]">5+</div>
               <div className="text-[#8fa3c8] text-xs">Years Experience</div>
             </motion.div>
           </motion.div>
