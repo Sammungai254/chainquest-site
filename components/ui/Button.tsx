@@ -1,7 +1,12 @@
 "use client";
 
 import { ReactNode } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
+
+// Motion-enabled next/link so href buttons get client-side navigation
+// (including /#section hash scrolling) instead of a full page reload.
+const MotionLink = motion.create(Link);
 
 interface ButtonProps {
   children: ReactNode;
@@ -47,15 +52,34 @@ export default function Button({
   const classes = `${base} ${sizes[size]} ${variants[variant]} ${disabled ? "opacity-50 cursor-not-allowed" : ""} ${className}`;
 
   if (href) {
+    // External / non-route links (mailto:, https://, tel:) keep a plain
+    // anchor; internal hrefs go through next/link for SPA navigation.
+    const isExternal = /^(https?:|mailto:|tel:)/.test(href);
+
+    if (isExternal) {
+      return (
+        <motion.a
+          href={href}
+          onClick={onClick}
+          className={classes}
+          whileHover={{ scale: disabled ? 1 : 1.03 }}
+          whileTap={{ scale: disabled ? 1 : 0.97 }}
+        >
+          {children}
+        </motion.a>
+      );
+    }
+
     return (
-      <motion.a
+      <MotionLink
         href={href}
+        onClick={onClick}
         className={classes}
         whileHover={{ scale: disabled ? 1 : 1.03 }}
         whileTap={{ scale: disabled ? 1 : 0.97 }}
       >
         {children}
-      </motion.a>
+      </MotionLink>
     );
   }
 

@@ -19,11 +19,14 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "ChainQuest Ke — Blockchain, AI & Web Development in Kenya",
-    template: "%s | ChainQuest Ke — Crypto & Web3 Education Kenya",
+    default:
+      "ChainQuest Ke — Kenya's #1 Crypto Educator & Web3 Consultant | Blockchain, AI & Web Dev",
+    template: "%s | ChainQuest Ke",
   },
+  // Kept under ~155 chars so WhatsApp / iMessage / Google previews show
+  // the full sentence without an ellipsis. Leads with authority + proof.
   description:
-    "Kenya's leading crypto educator and Web3 consultant. Learn blockchain trading, DeFi, NFTs and get expert web & AI solutions in Nairobi. 50+ clients served across East Africa.",
+    "Kenya's #1 crypto educator and Web3 consultant. Blockchain training, DeFi, AI solutions & modern websites — built in Nairobi. 50+ clients across East Africa.",
   keywords: [
     "crypto education Kenya",
     "blockchain training Nairobi",
@@ -41,11 +44,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: SITE_URL,
   },
-  icons: {
-    icon: [{ url: "/vercel.svg", type: "image/svg+xml" }],
-    shortcut: "/vercel.svg",
-    apple: "/vercel.svg",
-  },
+  // Icons are auto-wired from app/icon.tsx + app/apple-icon.tsx (Next.js
+  // file convention). Don't declare them here or the manual entries will
+  // collide with the generated <link> tags.
   robots: {
     index: true,
     follow: true,
@@ -62,26 +63,24 @@ export const metadata: Metadata = {
     locale: "en_KE",
     url: SITE_URL,
     siteName: "ChainQuest Ke",
-    title: "ChainQuest Ke — Blockchain, AI & Web Development in Kenya",
+    title:
+      "ChainQuest Ke — Kenya's #1 Crypto Educator & Web3 Consultant",
     description:
-      "Kenya's leading crypto educator and Web3 consultant. Learn blockchain trading, DeFi, NFTs and get expert web & AI solutions in Nairobi. 50+ clients served across East Africa.",
-    images: [
-      {
-        url: "/images/trainer.jpg",
-        width: 1200,
-        height: 630,
-        alt: "ChainQuest Ke — Crypto, AI & Web Development in Kenya",
-      },
-    ],
+      "Blockchain training, DeFi, AI solutions & modern websites — built in Nairobi. 50+ clients served across East Africa.",
+    // Image is auto-wired from app/opengraph-image.tsx. Don't redeclare
+    // `images` here or the static trainer.jpg will override the dynamic
+    // 1200×630 share card.
   },
   twitter: {
     card: "summary_large_image",
     site: "@ChainQuestKe",
     creator: "@ChainQuestKe",
-    title: "ChainQuest Ke — Blockchain, AI & Web Development in Kenya",
+    title:
+      "ChainQuest Ke — Kenya's #1 Crypto Educator & Web3 Consultant",
     description:
-      "Kenya's leading crypto educator and Web3 consultant. Blockchain trading, DeFi, NFTs, web & AI solutions in Nairobi.",
-    images: ["/images/trainer.jpg"],
+      "Blockchain · DeFi · AI · Web Dev — Nairobi, Kenya. 50+ clients across East Africa.",
+    // Image is auto-wired from app/twitter-image.tsx (which re-exports
+    // the OG card). Same reason as above — no manual `images` here.
   },
   category: "technology",
   other: {
@@ -220,6 +219,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      // Next.js 16 no longer suppresses CSS smooth-scrolling during route
+      // transitions unless this attribute is present. Without it, navigating
+      // from /blog/* back to a /#section anchor mis-scrolls. See the v16
+      // upgrade guide ("Scroll Behavior Override").
+      data-scroll-behavior="smooth"
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
       <body

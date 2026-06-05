@@ -21,8 +21,17 @@
   --font-mono: var(--font-geist-mono);
 }
 
-* {
+/* Smooth scroll belongs on the root scroller only. Putting it on `*`
+   makes every scrollable element (and scrollIntoView calls) animate,
+   which fights route transitions and mobile anchor navigation. */
+html {
   scroll-behavior: smooth;
+}
+
+/* Sections targeted by #anchors sit below the fixed navbar (h-16 mobile,
+   h-20 desktop) — without this the headline lands hidden under the bar. */
+section[id] {
+  scroll-margin-top: 5rem;
 }
 
 body {

@@ -1,27 +1,39 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronRight } from "lucide-react";
 import Button from "@/components/ui/Button";
 
+// Real anchors (`/#about`) instead of bare `#about` so the same href works
+// from every route: on the homepage the browser scrolls to the hash, and
+// from /blog/* Next.js navigates home first, then scrolls to the section.
 const navLinks = [
-  { label: "Home", href: "#hero" },
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "Community", href: "#community" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/#hero" },
+  { label: "About", href: "/#about" },
+  { label: "Services", href: "/#services" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "Portfolio", href: "/#portfolio" },
+  { label: "Community", href: "/#community" },
+  { label: "Contact", href: "/#contact" },
 ];
+
+// Wrap next/link so the staggered menu animation lives on the real <a>.
+// Using genuine links (not <button> + JS scroll) is what makes mobile taps
+// navigate reliably — there's a native fallback even if a framer-motion
+// gesture or the menu's exit animation interferes with the synthetic click.
+const MotionLink = motion.create(Link);
+
+// "/#about" -> "about"
+const sectionId = (href: string) => href.split("#")[1] ?? "";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
   const pathname = usePathname();
-  const router = useRouter();
   const isHome = pathname === "/";
 
   useEffect(() => {
@@ -31,7 +43,7 @@ export default function Navbar() {
       // Active-section tracking only matters on the homepage where the
       // anchors actually exist. On other routes (e.g. /blog) skip it.
       if (!isHome) return;
-      const sections = navLinks.map((l) => l.href.replace("#", ""));
+      const sections = navLinks.map((l) => sectionId(l.href));
       for (const section of [...sections].reverse()) {
         const el = document.getElementById(section);
         if (el && window.scrollY >= el.offsetTop - 100) {
@@ -46,19 +58,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isHome]);
 
-  const handleNavClick = (href: string) => {
-    setIsOpen(false);
-    const id = href.replace("#", "");
-
-    if (!isHome) {
-      // Navigate to the homepage at the requested anchor.
-      router.push(`/${href}`);
-      return;
-    }
-
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
+  const closeMenu = () => setIsOpen(false);
 
   return (
     <>
@@ -75,9 +75,9 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
-            <motion.a
-              href="#hero"
-              onClick={(e) => { e.preventDefault(); handleNavClick("#hero"); }}
+            <MotionLink
+              href="/#hero"
+              onClick={closeMenu}
               className="flex items-center gap-2 group"
               whileHover={{ scale: 1.02 }}
             >
@@ -95,32 +95,28 @@ export default function Navbar() {
                 </span>
                 <span className="text-[#f5c218]/70 text-xs font-semibold ml-1">Ke</span>
               </div>
-            </motion.a>
+            </MotionLink>
 
             {/* Desktop Nav */}
             <div className="hidden md:flex items-center gap-1">
               {navLinks.map((link) => (
-                <button
+                <Link
                   key={link.href}
-                  onClick={() => handleNavClick(link.href)}
+                  href={link.href}
                   className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
-                    activeSection === link.href.replace("#", "")
+                    activeSection === sectionId(link.href)
                       ? "text-[#f5c218] bg-[#f5c218]/10"
                       : "text-[#8fa3c8] hover:text-[#f0f4ff] hover:bg-white/5"
                   }`}
                 >
                   {link.label}
-                </button>
+                </Link>
               ))}
             </div>
 
             {/* CTA */}
             <div className="hidden md:block">
-              <Button
-                variant="primary"
-                size="sm"
-                onClick={() => handleNavClick("#booking")}
-              >
+              <Button variant="primary" size="sm" href="/#booking">
                 Book a Session
                 <ChevronRight className="w-4 h-4" />
               </Button>
@@ -150,26 +146,28 @@ export default function Navbar() {
           >
             <div className="px-4 py-4 space-y-1">
               {navLinks.map((link, i) => (
-                <motion.button
+                <MotionLink
                   key={link.href}
+                  href={link.href}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05 }}
-                  onClick={() => handleNavClick(link.href)}
-                  className={`w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-all ${
-                    activeSection === link.href.replace("#", "")
+                  onClick={closeMenu}
+                  className={`block w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-all ${
+                    activeSection === sectionId(link.href)
                       ? "text-[#f5c218] bg-[#f5c218]/10"
                       : "text-[#8fa3c8] hover:text-[#f0f4ff] hover:bg-white/5"
                   }`}
                 >
                   {link.label}
-                </motion.button>
+                </MotionLink>
               ))}
               <div className="pt-3 border-t border-[#f5c218]/10">
                 <Button
                   variant="primary"
                   className="w-full justify-center"
-                  onClick={() => handleNavClick("#booking")}
+                  href="/#booking"
+                  onClick={closeMenu}
                 >
                   Book a Session
                   <ChevronRight className="w-4 h-4" />

@@ -1,26 +1,27 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { usePathname, useRouter } from "next/navigation";
 import { Mail, Phone, ArrowUp, ArrowRight } from "lucide-react";
 import { XIcon, GitHubIcon, LinkedInIcon, WhatsAppIcon } from "@/components/ui/SocialIcons";
 import { WHATSAPP_COMMUNITY_URL, WHATSAPP_DIRECT_URL } from "@/lib/constants";
 
+// `/#section` (not bare `#section`) so the links also work from /blog/*.
 const footerLinks = {
   Services: [
-    { label: "Web Development", href: "#services" },
-    { label: "Crypto Education", href: "#services" },
-    { label: "AI Solutions", href: "#services" },
-    { label: "Business Development", href: "#services" },
-    { label: "Portfolio Creation", href: "#services" },
+    { label: "Web Development", href: "/#services" },
+    { label: "Crypto Education", href: "/#services" },
+    { label: "AI Solutions", href: "/#services" },
+    { label: "Business Development", href: "/#services" },
+    { label: "Portfolio Creation", href: "/#services" },
   ],
   Company: [
-    { label: "About", href: "#about" },
-    { label: "Portfolio", href: "#portfolio" },
-    { label: "Pricing", href: "#pricing" },
-    { label: "Community", href: "#community" },
-    { label: "Testimonials", href: "#testimonials" },
-    { label: "Contact", href: "#contact" },
+    { label: "About", href: "/#about" },
+    { label: "Portfolio", href: "/#portfolio" },
+    { label: "Pricing", href: "/#pricing" },
+    { label: "Community", href: "/#community" },
+    { label: "Testimonials", href: "/#testimonials" },
+    { label: "Contact", href: "/#contact" },
   ],
 };
 
@@ -32,22 +33,8 @@ const socials = [
 ];
 
 export default function Footer() {
-  const pathname = usePathname();
-  const router = useRouter();
-  const isHome = pathname === "/";
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const handleNavClick = (href: string) => {
-    const id = href.replace("#", "");
-    if (!isHome) {
-      router.push(`/${href}`);
-      return;
-    }
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
@@ -101,13 +88,13 @@ export default function Footer() {
               <ul className="space-y-2">
                 {links.map((link) => (
                   <li key={link.label}>
-                    <button
-                      onClick={() => handleNavClick(link.href)}
+                    <Link
+                      href={link.href}
                       className="text-[#8fa3c8] hover:text-[#f5c218] text-sm transition-colors hover:translate-x-1 inline-flex items-center gap-1 group"
                     >
                       <span className="w-0 group-hover:w-2 h-px bg-[#f5c218] transition-all duration-200" />
                       {link.label}
-                    </button>
+                    </Link>
                   </li>
                 ))}
               </ul>
