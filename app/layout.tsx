@@ -101,7 +101,7 @@ const personSchema = {
   "@type": "Person",
   name: "Samuel Mungai",
   url: SITE_URL,
-  image: `${SITE_URL}/images/trainer.jpg`,
+  image: `${SITE_URL}/images/trainer.jpeg`,
   jobTitle: "Crypto Educator, Blockchain Analyst & Web Developer",
   description:
     "Crypto educator, blockchain analyst, and web developer based in Nairobi, Kenya. Founder of ChainQuest Ke.",
@@ -137,8 +137,8 @@ const localBusinessSchema = {
   "@id": `${SITE_URL}#business`,
   name: "ChainQuest Ke",
   url: SITE_URL,
-  image: `${SITE_URL}/images/trainer.jpg`,
-  logo: `${SITE_URL}/images/trainer.jpg`,
+  image: `${SITE_URL}/images/trainer.jpeg`,
+  logo: `${SITE_URL}/images/trainer.jpeg`,
   description:
     "Kenya's leading crypto educator and Web3 consultant. Blockchain training, DeFi, NFT education, AI solutions, and web development in Nairobi.",
   email: "mungai.owino@chainquest.co.ke",

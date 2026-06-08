@@ -196,10 +196,10 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="relative z-10 w-56 h-56 md:w-64 md:h-64 rounded-full overflow-hidden border-2 border-[#f5c218]/40 shadow-[0_0_60px_rgba(245,194,24,0.15)]"
             >
-              {/* Trainer photo — place your image at /public/images/trainer.jpg */}
+              {/* Trainer photo — place your image at /public/images/trainer.jpeg */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/trainer.jpg"
+                src="/images/trainer.jpeg"
                 alt="ChainQuest Ke Trainer"
                 className="w-full h-full object-cover object-top"
                 onError={(e) => {
