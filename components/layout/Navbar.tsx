@@ -18,6 +18,7 @@ const navLinks = [
   { label: "Portfolio", href: "/#portfolio" },
   { label: "Community", href: "/#community" },
   { label: "Contact", href: "/#contact" },
+  { label: "Bot", href: "/bot", isPage: true },
 ];
 
 // Wrap next/link so the staggered menu animation lives on the real <a>.
@@ -99,19 +100,27 @@ export default function Navbar() {
 
             {/* Desktop Nav */}
             <div className="hidden md:flex items-center gap-1">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
-                    activeSection === sectionId(link.href)
-                      ? "text-[#f5c218] bg-[#f5c218]/10"
-                      : "text-[#8fa3c8] hover:text-[#f0f4ff] hover:bg-white/5"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = link.isPage
+                  ? pathname === link.href
+                  : activeSection === sectionId(link.href);
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 flex items-center gap-1.5 ${
+                      isActive
+                        ? "text-[#f5c218] bg-[#f5c218]/10"
+                        : "text-[#8fa3c8] hover:text-[#f0f4ff] hover:bg-white/5"
+                    }`}
+                  >
+                    {link.isPage && (
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    )}
+                    {link.label}
+                  </Link>
+                );
+              })}
             </div>
 
             {/* CTA */}
@@ -145,23 +154,31 @@ export default function Navbar() {
             className="fixed top-16 left-0 right-0 z-40 bg-[#080e1e]/98 backdrop-blur-md border-b border-[#f5c218]/10 md:hidden overflow-hidden"
           >
             <div className="px-4 py-4 space-y-1">
-              {navLinks.map((link, i) => (
-                <MotionLink
-                  key={link.href}
-                  href={link.href}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                  onClick={closeMenu}
-                  className={`block w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-all ${
-                    activeSection === sectionId(link.href)
-                      ? "text-[#f5c218] bg-[#f5c218]/10"
-                      : "text-[#8fa3c8] hover:text-[#f0f4ff] hover:bg-white/5"
-                  }`}
-                >
-                  {link.label}
-                </MotionLink>
-              ))}
+              {navLinks.map((link, i) => {
+                const isActive = link.isPage
+                  ? pathname === link.href
+                  : activeSection === sectionId(link.href);
+                return (
+                  <MotionLink
+                    key={link.href}
+                    href={link.href}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05 }}
+                    onClick={closeMenu}
+                    className={`flex items-center gap-2 w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-all ${
+                      isActive
+                        ? "text-[#f5c218] bg-[#f5c218]/10"
+                        : "text-[#8fa3c8] hover:text-[#f0f4ff] hover:bg-white/5"
+                    }`}
+                  >
+                    {link.isPage && (
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    )}
+                    {link.label}
+                  </MotionLink>
+                );
+              })}
               <div className="pt-3 border-t border-[#f5c218]/10">
                 <Button
                   variant="primary"
