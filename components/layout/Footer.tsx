@@ -10,10 +10,11 @@ import { WHATSAPP_COMMUNITY_URL, WHATSAPP_DIRECT_URL } from "@/lib/constants";
 const footerLinks = {
   Services: [
     { label: "Web Development", href: "/#services" },
-    { label: "Crypto Education", href: "/#services" },
     { label: "AI Solutions", href: "/#services" },
+    { label: "GIS & Spatial Data", href: "/#services" },
     { label: "Business Development", href: "/#services" },
     { label: "Portfolio Creation", href: "/#services" },
+    { label: "Crypto Education", href: "/#services" },
   ],
   Company: [
     { label: "About", href: "/#about" },

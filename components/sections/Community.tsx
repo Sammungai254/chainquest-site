@@ -57,7 +57,7 @@ export default function Community() {
           badge="Join the Community"
           title="Learn Weekly. "
           highlight="Grow Together."
-          subtitle="A free WhatsApp community for African builders, traders, and learners — plus weekly live classes on Google Meet hosted by Samuel."
+          subtitle="A free WhatsApp community for African builders, learners, and traders — plus weekly live classes on Google Meet hosted by the ChainQuest Ke team."
         />
 
         <div className="grid lg:grid-cols-5 gap-8 items-stretch">
