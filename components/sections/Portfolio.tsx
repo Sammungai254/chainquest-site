@@ -49,14 +49,14 @@ const projects = [
     image: null,
   },
   {
-    id: 2,
-    category: "Crypto",
-    icon: Bitcoin,
-    title: "DeFi Portfolio Tracker",
+    id: 4,
+    category: "Web",
+    icon: Globe,
+    title: "Developer Portfolio Site",
     description:
-      "Real-time DeFi portfolio dashboard that aggregates holdings across multiple chains. Features price alerts, P&L tracking, and gas fee optimization tips.",
-    stack: ["React", "Web3.js", "CoinGecko API", "Chart.js"],
-    color: "gold",
+      "Portfolio site delivered for a Kenyan developer client. Dark theme with 3D animations, project showcases, and an integrated blog. Scored 98 on Lighthouse performance.",
+    stack: ["Next.js", "Three.js", "Framer Motion", "MDX"],
+    color: "green",
     status: "Live",
     demoUrl: "#",
     githubUrl: "#",
@@ -77,14 +77,29 @@ const projects = [
     image: null,
   },
   {
-    id: 4,
-    category: "Web",
-    icon: Globe,
-    title: "Personal Developer Portfolio",
+    id: 6,
+    category: "AI",
+    icon: Bot,
+    title: "Content Automation Suite",
     description:
-      "Award-winning portfolio site for a Kenyan developer. Dark theme with 3D animations, project showcases, and integrated blog. Scored 98 on Lighthouse performance.",
-    stack: ["Next.js", "Three.js", "Framer Motion", "MDX"],
-    color: "green",
+      "AI-powered content pipeline for social media managers. Generates, schedules, and posts content across Twitter, Instagram, and LinkedIn using GPT-4 and Zapier.",
+    stack: ["Python", "GPT-4 API", "Zapier", "Buffer API"],
+    color: "pink",
+    status: "Live",
+    demoUrl: "#",
+    githubUrl: "#",
+    image: null,
+  },
+  // --- Crypto projects: kept, moved to the end of the grid ---
+  {
+    id: 2,
+    category: "Crypto",
+    icon: Bitcoin,
+    title: "DeFi Portfolio Tracker",
+    description:
+      "Real-time DeFi portfolio dashboard that aggregates holdings across multiple chains. Features price alerts, P&L tracking, and gas fee optimization tips.",
+    stack: ["React", "Web3.js", "CoinGecko API", "Chart.js"],
+    color: "gold",
     status: "Live",
     demoUrl: "#",
     githubUrl: "#",
@@ -100,20 +115,6 @@ const projects = [
     stack: ["Solidity", "React", "Ethers.js", "IPFS", "Polygon"],
     color: "orange",
     status: "Beta",
-    demoUrl: "#",
-    githubUrl: "#",
-    image: null,
-  },
-  {
-    id: 6,
-    category: "AI",
-    icon: Bot,
-    title: "Content Automation Suite",
-    description:
-      "AI-powered content pipeline for social media managers. Generates, schedules, and posts content across Twitter, Instagram, and LinkedIn using GPT-4 and Zapier.",
-    stack: ["Python", "GPT-4 API", "Zapier", "Buffer API"],
-    color: "pink",
-    status: "Live",
     demoUrl: "#",
     githubUrl: "#",
     image: null,
@@ -168,7 +169,7 @@ const colorMap: Record<
   },
 };
 
-const categories = ["All", "Business Systems", "Web", "Crypto", "AI"];
+const categories = ["All", "Business Systems", "Web", "AI", "Crypto"];
 
 import { useState } from "react";
 
@@ -189,7 +190,7 @@ export default function Portfolio() {
           badge="Our Work"
           title="Projects That "
           highlight="Speak for Themselves"
-          subtitle="Real solutions built for real people — spanning web development, blockchain, and AI automation."
+          subtitle="Production systems and digital solutions delivered for clients — spanning business systems, web platforms, AI automation, and blockchain."
         />
 
         {/* Category Filter */}

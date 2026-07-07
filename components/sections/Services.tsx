@@ -15,15 +15,28 @@ import {
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 
+// Ordered so software / systems / AI / GIS lead; the two crypto cards sit
+// last — still present and bookable, no longer mid-list. "Most Popular"
+// now sits on Web Development, the flagship dev service.
 const services = [
   {
     icon: Globe,
     title: "Web Development",
-    tagline: "Portfolio & Business Websites",
+    tagline: "Business Platforms & Websites",
     description:
-      "From stunning portfolio sites to full-scale business platforms. Built with React/Next.js, optimized for speed, SEO, and conversions.",
-    features: ["Landing Pages", "Business Websites", "E-Commerce", "Web Apps"],
+      "From full-scale business platforms and web apps to fast marketing sites. Built with React/Next.js and Django, optimized for speed, SEO, and conversions.",
+    features: ["Business Websites", "Web Apps", "E-Commerce", "APIs & Backends"],
     color: "blue",
+    popular: true,
+  },
+  {
+    icon: Bot,
+    title: "AI Solutions & Automation",
+    tagline: "Intelligent Business Tools",
+    description:
+      "Integrate cutting-edge AI tools into your business — chatbots, content generation, workflow automation, and custom AI-powered applications.",
+    features: ["AI Chatbots", "Content Automation", "Workflow AI", "Custom GPT Tools"],
+    color: "purple",
     popular: false,
   },
   {
@@ -37,36 +50,6 @@ const services = [
     popular: false,
   },
   {
-    icon: Bitcoin,
-    title: "Crypto Education & Strategy",
-    tagline: "DeFi, NFTs & Trading",
-    description:
-      "Comprehensive blockchain education: how to trade safely, leverage DeFi protocols, understand NFTs, and build long-term crypto investment strategies.",
-    features: ["Trading Strategies", "DeFi Protocols", "NFT Guidance", "Risk Management"],
-    color: "gold",
-    popular: true,
-  },
-  {
-    icon: Users,
-    title: "Crypto Community Management",
-    tagline: "Education-First Community Growth",
-    description:
-      "Support for building and managing a crypto-focused community. Includes content planning, member education, and structured engagement — suited for projects that want to grow an informed, active audience.",
-    features: ["Community Building", "Telegram / Discord", "Education", "Trading Guidance"],
-    color: "orange",
-    popular: false,
-  },
-  {
-    icon: Bot,
-    title: "AI Solutions & Automation",
-    tagline: "Intelligent Business Tools",
-    description:
-      "Integrate cutting-edge AI tools into your business — chatbots, content generation, workflow automation, and custom AI-powered applications.",
-    features: ["AI Chatbots", "Content Automation", "Workflow AI", "Custom GPT Tools"],
-    color: "purple",
-    popular: false,
-  },
-  {
     icon: Building2,
     title: "Business Digital Transformation",
     tagline: "Go Digital, Grow Faster",
@@ -74,6 +57,16 @@ const services = [
       "Help traditional businesses migrate online: digital strategy, social media automation, CRM setup, and complete digital infrastructure.",
     features: ["Digital Strategy", "Social Media", "CRM Setup", "Brand Identity"],
     color: "green",
+    popular: false,
+  },
+  {
+    icon: Sparkles,
+    title: "Custom Digital Solutions",
+    tagline: "Tailored to Your Needs",
+    description:
+      "Have a unique challenge? We build custom solutions combining web, AI, and data technologies for your specific use case.",
+    features: ["Custom Development", "API Integrations", "System Design", "Consulting"],
+    color: "pink",
     popular: false,
   },
   {
@@ -87,13 +80,23 @@ const services = [
     popular: false,
   },
   {
-    icon: Sparkles,
-    title: "Custom Digital Solutions",
-    tagline: "Tailored to Your Needs",
+    icon: Bitcoin,
+    title: "Crypto Education & Strategy",
+    tagline: "Blockchain & Trading Basics",
     description:
-      "Have a unique challenge? We build custom solutions combining web, AI, and blockchain technologies for your specific use case.",
-    features: ["Custom Development", "API Integrations", "Blockchain Apps", "Consulting"],
-    color: "pink",
+      "Practical blockchain and trading education for individuals and teams — from getting started safely to building a long-term strategy.",
+    features: ["Trading Basics", "Blockchain 101", "Risk Management", "Portfolio Strategy"],
+    color: "gold",
+    popular: false,
+  },
+  {
+    icon: Users,
+    title: "Crypto Community Management",
+    tagline: "Education-First Community Growth",
+    description:
+      "Support for building and managing a crypto-focused community — content planning, member education, and structured engagement for an informed, active audience.",
+    features: ["Community Building", "Telegram / Discord", "Education", "Engagement"],
+    color: "orange",
     popular: false,
   },
 ];
@@ -165,7 +168,7 @@ export default function Services() {
           badge="What We Offer"
           title="Services That Drive "
           highlight="Real Results"
-          subtitle="From web development to blockchain education — comprehensive digital solutions designed for the African market and beyond."
+          subtitle="From software and business systems to GIS and AI integration — comprehensive digital solutions designed for the African market, with Web3 education alongside."
         />
 
         <motion.div

@@ -23,7 +23,7 @@ const expertise = [
   {
     icon: Bitcoin,
     title: "Crypto Education",
-    description: "Practical, no-hype guidance on blockchain and trading — for individuals and community groups.",
+    description: "Practical blockchain & trading education for individuals and teams — one service line among several.",
     color: "gold",
   },
   {
@@ -98,9 +98,9 @@ export default function About() {
                 <motion.div
                   animate={{ y: [0, -8, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  className="relative z-10 w-32 h-32 rounded-full border-2 border-[#f5c218]/50 bg-[#f5c218]/10 flex items-center justify-center shadow-[0_0_40px_rgba(245,194,24,0.2)]"
+                  className="relative z-10 w-32 h-32 rounded-2xl border-2 border-[#f5c218]/50 bg-[#f5c218]/10 flex items-center justify-center shadow-[0_0_40px_rgba(245,194,24,0.2)]"
                 >
-                  <span className="text-[#f5c218] text-5xl font-black">S</span>
+                  <span className="text-[#f5c218] text-4xl font-black tracking-tight">CQ</span>
                 </motion.div>
 
                 {/* Online badge */}
@@ -112,13 +112,13 @@ export default function About() {
 
               {/* Info */}
               <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-1">Samuel — ChainQuest Ke</h3>
+                <h3 className="text-xl font-bold text-white mb-1">ChainQuest Ke</h3>
                 <p className="text-[#f5c218] text-sm font-medium mb-3">
-                  Software Developer · GIS Specialist · Crypto Educator
+                  Software · GIS &amp; Spatial · AI Integration
                 </p>
                 <p className="text-[#8fa3c8] text-sm leading-relaxed">
-                  Based in Nairobi, Kenya — building practical digital solutions for businesses
-                  and individuals across Kenya and East Africa.
+                  A Nairobi-based digital solutions firm building practical software and systems
+                  for businesses and individuals across Kenya and East Africa.
                 </p>
               </div>
             </div>
@@ -167,14 +167,14 @@ export default function About() {
             />
 
             <p className="text-[#8fa3c8] leading-relaxed mb-6">
-              ChainQuest Ke is a Nairobi-based digital services firm offering web development,
-              GIS and spatial data solutions, web3 & crypto education, and AI integration. The
-              business is led by Samuel, a software and GIS developer with hands-on experience
-              building production systems — including enterprise-level government platforms, a
-              corporate travel management system, and an internal requisition system for
-              streamlining company procurement and approval workflows. Samuel also runs a
-              crypto education community helping beginners navigate blockchain and trading
-              with practical, no-hype guidance.
+              ChainQuest Ke is a Nairobi-based digital solutions firm delivering software and
+              business systems, GIS and spatial data solutions, and AI integration — with
+              production work spanning government platforms, a corporate travel management
+              system, and an internal requisition system that streamlines company procurement
+              and approval workflows. The firm is led by Samuel, a software and GIS developer
+              with hands-on experience on these production systems. Alongside our core
+              engineering work, we also run a practical, no-hype crypto and Web3 education
+              programme for individuals and teams.
             </p>
 
             {/* Expertise grid — single column on small phones so the labels and

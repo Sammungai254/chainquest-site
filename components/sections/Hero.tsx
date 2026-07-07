@@ -1,14 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ChevronDown, Zap, Shield, TrendingUp, Users } from "lucide-react";
+import { ChevronDown, Zap, Code2, Bot, Map, Users } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { WHATSAPP_COMMUNITY_URL } from "@/lib/constants";
 
+// Service-category tags that float around the hero product mockup. Ordered
+// software → AI → GIS so the systems/dev work leads (crypto lives further
+// down the page, not in the brand's headline visual).
 const floatingBadges = [
-  { icon: Zap, label: "AI Solutions", color: "blue", delay: 0.2 },
-  { icon: Shield, label: "Blockchain", color: "gold", delay: 0.4 },
-  { icon: TrendingUp, label: "Crypto Expert", color: "green", delay: 0.6 },
+  { icon: Code2, label: "Software Systems", color: "blue", delay: 0.2 },
+  { icon: Bot, label: "AI Integration", color: "purple", delay: 0.4 },
+  { icon: Map, label: "GIS & Spatial", color: "green", delay: 0.6 },
 ];
 
 export default function Hero() {
@@ -108,9 +111,10 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-[#8fa3c8] text-lg md:text-xl leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0"
             >
-              We help individuals and businesses grow through practical web development,
-              blockchain education, GIS solutions, and AI-powered tools — grounded in real
-              experience and built for local needs.
+              ChainQuest Ke is a Nairobi digital solutions firm building software and
+              business systems, GIS &amp; spatial tools, and AI integrations — with Web3 and
+              crypto education as one of our supporting services. Grounded in real
+              experience, built for local needs.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -183,40 +187,98 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right: Profile Image + badges */}
+          {/* Right: Product-window mockup + service badges.
+              A coded, data-free dashboard frame that signals "we ship
+              production business systems" — no personal photo. */}
           <div className="relative flex justify-center items-center">
-            {/* Glow ring behind image */}
-            <div className="absolute w-72 h-72 md:w-80 md:h-80 rounded-full bg-[#f5c218]/5 border border-[#f5c218]/15 blur-sm" />
-            <div className="absolute w-64 h-64 md:w-72 md:h-72 rounded-full border border-[#f5c218]/10 animate-[spin_20s_linear_infinite]" />
+            {/* Ambient glow behind the window */}
+            <div className="absolute w-80 h-80 md:w-96 md:h-96 rounded-full bg-[#f5c218]/5 blur-3xl" />
+            <div className="absolute w-72 h-72 md:w-80 md:h-80 rounded-full bg-[#1e4d8c]/15 blur-3xl" />
 
-            {/* Profile image container */}
+            {/* App window */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="relative z-10 w-56 h-56 md:w-64 md:h-64 rounded-full overflow-hidden border-2 border-[#f5c218]/40 shadow-[0_0_60px_rgba(245,194,24,0.15)]"
+              whileHover={{ y: -4 }}
+              className="relative z-10 w-full max-w-md rounded-2xl overflow-hidden border border-[#f5c218]/20 bg-gradient-to-br from-[#0f1d35] to-[#0b1526] shadow-[0_20px_70px_rgba(0,0,0,0.5),0_0_50px_rgba(245,194,24,0.08)]"
             >
-              {/* Trainer photo — place your image at /public/images/trainer.jpeg */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/trainer.jpeg"
-                alt="ChainQuest Ke Trainer"
-                className="w-full h-full object-cover object-top"
-                onError={(e) => {
-                  // Fallback to gradient placeholder if image not found
-                  const target = e.currentTarget;
-                  target.style.display = "none";
-                  const placeholder = target.nextElementSibling as HTMLElement;
-                  if (placeholder) placeholder.style.display = "flex";
-                }}
-              />
-              {/* Fallback placeholder (hidden when photo loads) */}
-              <div className="w-full h-full bg-gradient-to-br from-[#1e4d8c] via-[#0f1d35] to-[#0d1628] items-center justify-center hidden absolute inset-0">
-                <div className="text-center">
-                  <div className="w-20 h-20 rounded-full bg-[#f5c218]/20 border-2 border-[#f5c218]/40 flex items-center justify-center mx-auto mb-3">
-                    <span className="text-[#f5c218] text-3xl font-black">S</span>
+              {/* Title bar */}
+              <div className="flex items-center gap-2 px-4 py-3 border-b border-white/5 bg-[#0b1526]/60">
+                <span className="w-3 h-3 rounded-full bg-[#ff5f57]/70" />
+                <span className="w-3 h-3 rounded-full bg-[#febc2e]/70" />
+                <span className="w-3 h-3 rounded-full bg-[#28c840]/70" />
+                <span className="ml-3 text-[#8fa3c8] text-xs font-medium tracking-wide">
+                  requisitions · dashboard
+                </span>
+                <span className="ml-auto flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="text-emerald-400/80 text-[10px] font-semibold">live</span>
+                </span>
+              </div>
+
+              {/* Body */}
+              <div className="p-5">
+                {/* Stat cards */}
+                <div className="grid grid-cols-3 gap-3 mb-4">
+                  {[
+                    { label: "Requests", value: "142", tint: "text-[#f5c218]" },
+                    { label: "Approved", value: "98", tint: "text-emerald-400" },
+                    { label: "Pending", value: "12", tint: "text-blue-400" },
+                  ].map((s, si) => (
+                    <motion.div
+                      key={s.label}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.6 + si * 0.1 }}
+                      className="rounded-lg bg-[#080e1e]/60 border border-white/5 p-3"
+                    >
+                      <div className={`text-xl font-black ${s.tint}`}>{s.value}</div>
+                      <div className="text-[#8fa3c8] text-[10px] mt-0.5">{s.label}</div>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Sparkline / chart area */}
+                <div className="rounded-lg bg-[#080e1e]/60 border border-white/5 p-3 mb-4">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-[#f0f4ff] text-xs font-semibold">Throughput</span>
+                    <span className="text-[#8fa3c8] text-[10px]">last 12 wks</span>
                   </div>
-                  <span className="text-[#8fa3c8] text-sm">Trainer & Developer</span>
+                  <div className="flex items-end gap-1.5 h-16">
+                    {[38, 52, 45, 63, 58, 74, 69, 82, 77, 90, 85, 96].map((h, bi) => (
+                      <motion.span
+                        key={bi}
+                        initial={{ height: 0 }}
+                        animate={{ height: `${h}%` }}
+                        transition={{ delay: 0.8 + bi * 0.04, duration: 0.4 }}
+                        className={`flex-1 rounded-sm ${bi === 11 ? "bg-[#f5c218]" : "bg-[#1e4d8c]"}`}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                {/* Table skeleton */}
+                <div className="space-y-2">
+                  {[
+                    { w: "w-2/3", tag: "APPROVED", tint: "bg-emerald-500/15 text-emerald-300" },
+                    { w: "w-1/2", tag: "PENDING", tint: "bg-blue-500/15 text-blue-300" },
+                    { w: "w-3/5", tag: "APPROVED", tint: "bg-emerald-500/15 text-emerald-300" },
+                  ].map((row, ri) => (
+                    <motion.div
+                      key={ri}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 1 + ri * 0.1 }}
+                      className="flex items-center gap-3"
+                    >
+                      <span className="w-6 h-6 rounded-md bg-[#1e4d8c]/40 flex-shrink-0" />
+                      <span className={`h-2 rounded-full bg-white/10 ${row.w}`} />
+                      <span className={`ml-auto px-2 py-0.5 rounded text-[9px] font-bold ${row.tint}`}>
+                        {row.tag}
+                      </span>
+                    </motion.div>
+                  ))}
                 </div>
               </div>
 
@@ -228,11 +290,12 @@ export default function Hero() {
             {floatingBadges.map(({ icon: Icon, label, color, delay }, i) => {
               const positions = [
                 "-top-4 -left-4 md:-left-8",
-                "top-1/2 -right-4 md:-right-12",
+                "top-1/2 -right-4 md:-right-10",
                 "-bottom-4 left-4 md:left-0",
               ];
               const colors: Record<string, string> = {
                 blue: "bg-blue-500/20 border-blue-400/30 text-blue-300",
+                purple: "bg-purple-500/20 border-purple-400/30 text-purple-300",
                 gold: "bg-[#f5c218]/20 border-[#f5c218]/30 text-[#f5c218]",
                 green: "bg-emerald-500/20 border-emerald-400/30 text-emerald-300",
               };

@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 // Image metadata — Next.js auto-wires these into <head> og:image:* tags.
 export const alt =
-  "ChainQuest Ke — Kenya's #1 Crypto Educator & Web3 Consultant. Blockchain, DeFi, AI & Web Dev. 50+ clients across East Africa.";
+  "ChainQuest Ke — Digital Solutions & Systems Development in Nairobi. Software, GIS, AI Integration & Web3 education. 50+ clients across East Africa.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -115,9 +115,9 @@ export default function Image() {
           }}
         >
           <span>
-            Kenya&apos;s <span style={{ color: GOLD }}>#1</span> Crypto Educator
+            <span style={{ color: GOLD }}>Digital</span> Solutions
           </span>
-          <span>&amp; Web3 Consultant</span>
+          <span>&amp; Systems Development</span>
         </div>
 
         {/* Services row */}
@@ -132,13 +132,13 @@ export default function Image() {
             fontWeight: 500,
           }}
         >
-          <span>Blockchain</span>
+          <span>Software</span>
           <span style={{ color: GOLD }}>·</span>
-          <span>DeFi</span>
+          <span>GIS</span>
           <span style={{ color: GOLD }}>·</span>
           <span>AI</span>
           <span style={{ color: GOLD }}>·</span>
-          <span>Web Dev</span>
+          <span>Web3</span>
         </div>
 
         {/* Spacer pushes the footer row to the bottom. */}

@@ -9,14 +9,14 @@ import { posts } from "@/lib/posts";
 const SITE_URL = "https://chainquest.co.ke";
 
 export const metadata: Metadata = {
-  title: "Insights — Crypto, AI & Web3 Articles",
+  title: "Insights — Digital Solutions, Systems & Web3",
   description:
-    "Practical articles on DeFi, AI in crypto trading, and Web3 development — written for African builders, traders, and investors by Samuel Mungai.",
+    "Practical articles on digital solutions, systems, AI, and Web3 — written for African builders and businesses by the ChainQuest Ke team.",
   alternates: { canonical: `${SITE_URL}/blog` },
   openGraph: {
-    title: "ChainQuest Ke Insights — Crypto, AI & Web3 Articles",
+    title: "ChainQuest Ke Insights — Digital Solutions, Systems & Web3",
     description:
-      "Practical articles on DeFi, AI in crypto trading, and Web3 development for African builders.",
+      "Practical articles on digital solutions, systems, AI, and Web3 for African builders and businesses.",
     url: `${SITE_URL}/blog`,
     type: "website",
   },
@@ -71,7 +71,7 @@ export default function BlogIndexPage() {
           <SectionHeading
             badge="Insights & Articles"
             title="Notes on "
-            highlight="Crypto, AI & Web3"
+            highlight="Digital Solutions, Systems & Web3"
             subtitle="Practical takes on the tech shaping Africa's digital economy — written from the ground up."
           />
 

@@ -20,23 +20,23 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default:
-      "ChainQuest Ke — Kenya's #1 Crypto Educator & Web3 Consultant | Blockchain, AI & Web Dev",
+      "ChainQuest Ke — Digital Solutions & Systems Development in Nairobi | Software, GIS & AI",
     template: "%s | ChainQuest Ke",
   },
   // Kept under ~155 chars so WhatsApp / iMessage / Google previews show
-  // the full sentence without an ellipsis. Leads with authority + proof.
+  // the full sentence without an ellipsis. Leads with the core offering.
   description:
-    "Kenya's #1 crypto educator and Web3 consultant. Blockchain training, DeFi, AI solutions & modern websites — built in Nairobi. 50+ clients across East Africa.",
+    "Nairobi digital solutions firm building software, business systems, GIS & AI integrations — plus Web3 education. 50+ clients served across East Africa.",
   keywords: [
-    "crypto education Kenya",
-    "blockchain training Nairobi",
-    "Web3 consultant Kenya",
-    "DeFi Kenya",
-    "NFT Kenya",
-    "AI solutions Nairobi",
+    "software development Nairobi",
+    "digital solutions Kenya",
+    "business systems Kenya",
+    "GIS solutions Nairobi",
+    "spatial data Kenya",
+    "AI integration Nairobi",
     "web developer Nairobi",
-    "cryptocurrency trading Kenya",
-    "blockchain educator East Africa",
+    "custom software East Africa",
+    "blockchain & crypto education Kenya",
   ],
   authors: [{ name: "Samuel Mungai Owino", url: SITE_URL }],
   creator: "Samuel Mungai",
@@ -64,11 +64,11 @@ export const metadata: Metadata = {
     url: SITE_URL,
     siteName: "ChainQuest Ke",
     title:
-      "ChainQuest Ke — Kenya's #1 Crypto Educator & Web3 Consultant",
+      "ChainQuest Ke — Digital Solutions & Systems Development in Nairobi",
     description:
-      "Blockchain training, DeFi, AI solutions & modern websites — built in Nairobi. 50+ clients served across East Africa.",
+      "Software, business systems, GIS & AI integration — built in Nairobi, plus Web3 education. 50+ clients served across East Africa.",
     // Image is auto-wired from app/opengraph-image.tsx. Don't redeclare
-    // `images` here or the static trainer.jpg will override the dynamic
+    // `images` here or a static image would override the dynamic
     // 1200×630 share card.
   },
   twitter: {
@@ -76,9 +76,9 @@ export const metadata: Metadata = {
     site: "@ChainQuestKe",
     creator: "@ChainQuestKe",
     title:
-      "ChainQuest Ke — Kenya's #1 Crypto Educator & Web3 Consultant",
+      "ChainQuest Ke — Digital Solutions & Systems Development in Nairobi",
     description:
-      "Blockchain · DeFi · AI · Web Dev — Nairobi, Kenya. 50+ clients across East Africa.",
+      "Software · GIS · AI Integration · Web3 Education — Nairobi, Kenya. 50+ clients across East Africa.",
     // Image is auto-wired from app/twitter-image.tsx (which re-exports
     // the OG card). Same reason as above — no manual `images` here.
   },
@@ -101,10 +101,9 @@ const personSchema = {
   "@type": "Person",
   name: "Samuel Mungai",
   url: SITE_URL,
-  image: `${SITE_URL}/images/trainer.jpeg`,
-  jobTitle: "Crypto Educator, Blockchain Analyst & Web Developer",
+  jobTitle: "Software & GIS Developer, Founder of ChainQuest Ke",
   description:
-    "Crypto educator, blockchain analyst, and web developer based in Nairobi, Kenya. Founder of ChainQuest Ke.",
+    "Software and GIS developer based in Nairobi, Kenya. Founder and lead engineer of ChainQuest Ke, building production business systems, GIS solutions, and AI integrations.",
   worksFor: {
     "@type": "Organization",
     name: "ChainQuest Ke",
@@ -116,13 +115,13 @@ const personSchema = {
     addressCountry: "KE",
   },
   knowsAbout: [
-    "Cryptocurrency",
-    "Blockchain",
-    "DeFi",
-    "NFTs",
-    "Web3",
+    "Software Development",
+    "Business Systems",
+    "GIS & Spatial Data",
+    "AI Integration",
     "Web Development",
-    "AI Solutions",
+    "Blockchain",
+    "Web3 Education",
   ],
   sameAs: [
     "https://twitter.com/chainquestke",
@@ -137,10 +136,10 @@ const localBusinessSchema = {
   "@id": `${SITE_URL}#business`,
   name: "ChainQuest Ke",
   url: SITE_URL,
-  image: `${SITE_URL}/images/trainer.jpeg`,
-  logo: `${SITE_URL}/images/trainer.jpeg`,
+  image: `${SITE_URL}/opengraph-image`,
+  logo: `${SITE_URL}/opengraph-image`,
   description:
-    "Kenya's leading crypto educator and Web3 consultant. Blockchain training, DeFi, NFT education, AI solutions, and web development in Nairobi.",
+    "Nairobi-based digital solutions firm delivering software, business systems, GIS & spatial data, and AI integration — plus Web3 and crypto education.",
   email: "mungai.owino@chainquest.co.ke",
   telephone: "+254745381960",
   priceRange: "$$",
@@ -171,21 +170,12 @@ const servicesSchema = {
   "@graph": [
     {
       "@type": "Service",
-      name: "Crypto Education & Strategy",
-      serviceType: "Cryptocurrency Education",
+      name: "Software & Web Development",
+      serviceType: "Software Development",
       provider: { "@id": `${SITE_URL}#business` },
       areaServed: { "@type": "Country", name: "Kenya" },
       description:
-        "Beginner-to-advanced training on cryptocurrency trading, DeFi, NFTs, and portfolio strategy.",
-    },
-    {
-      "@type": "Service",
-      name: "Web3 Consulting",
-      serviceType: "Blockchain Consulting",
-      provider: { "@id": `${SITE_URL}#business` },
-      areaServed: { "@type": "Country", name: "Kenya" },
-      description:
-        "Web3 advisory and blockchain integration for businesses looking to enter the decentralised economy.",
+        "Production web platforms, business systems, and APIs built with Django, Next.js, React, and PostgreSQL.",
     },
     {
       "@type": "Service",
@@ -194,16 +184,25 @@ const servicesSchema = {
       provider: { "@id": `${SITE_URL}#business` },
       areaServed: { "@type": "Country", name: "Kenya" },
       description:
-        "Custom AI-powered automation, chatbots, and workflow tools for African businesses.",
+        "Custom AI-powered automation, chatbots, and workflow tools integrated into existing business systems.",
     },
     {
       "@type": "Service",
-      name: "Web Development",
-      serviceType: "Web Development",
+      name: "GIS & Spatial Data Solutions",
+      serviceType: "Geographic Information Systems",
       provider: { "@id": `${SITE_URL}#business` },
       areaServed: { "@type": "Country", name: "Kenya" },
       description:
-        "Modern, fast, SEO-friendly websites built with Next.js, React, and Tailwind CSS.",
+        "Geospatial processing, mapping, and spatial analysis for land, infrastructure, and business use cases.",
+    },
+    {
+      "@type": "Service",
+      name: "Crypto & Web3 Education",
+      serviceType: "Cryptocurrency Education",
+      provider: { "@id": `${SITE_URL}#business` },
+      areaServed: { "@type": "Country", name: "Kenya" },
+      description:
+        "Practical blockchain and trading education for individuals and teams — beginner to advanced.",
     },
   ],
 };

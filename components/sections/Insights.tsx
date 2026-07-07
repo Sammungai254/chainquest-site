@@ -47,8 +47,8 @@ export default function Insights() {
         <SectionHeading
           badge="Insights & Articles"
           title="Notes on "
-          highlight="Crypto, AI & Web3"
-          subtitle="Practical takes on the tech shaping Africa's digital economy — written from the ground up."
+          highlight="Digital Solutions, Systems & Web3"
+          subtitle="Practical takes on the tech shaping Africa's digital economy — from software and systems to AI and Web3."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
