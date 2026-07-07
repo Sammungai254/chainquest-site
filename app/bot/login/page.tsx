@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
 import { Bot, Lock, Eye, EyeOff } from "lucide-react";
 
 async function attempt(password: string): Promise<boolean> {
@@ -18,7 +17,6 @@ export default function BotLogin() {
   const [show, setShow] = useState(false);
   const [error, setError] = useState("");
   const [pending, startTransition] = useTransition();
-  const router = useRouter();
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -26,8 +24,7 @@ export default function BotLogin() {
     startTransition(async () => {
       const ok = await attempt(password);
       if (ok) {
-        router.push("/bot");
-        router.refresh();
+        window.location.href = "/bot";
       } else {
         setError("Incorrect password.");
         setPassword("");
