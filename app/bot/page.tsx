@@ -6,6 +6,8 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import StatsGrid from "@/components/bot/StatsGrid";
 import TradesTable from "@/components/bot/TradesTable";
 import EquityChartWrapper from "@/components/bot/EquityChartWrapper";
+import TierBreakdown from "@/components/bot/TierBreakdown";
+import SignalFeed from "@/components/bot/SignalFeed";
 import type { BotStats } from "@/app/api/bot-stats/route";
 
 export const metadata: Metadata = {
@@ -115,6 +117,30 @@ export default async function BotPage() {
         />
         <div className="bg-[#0d1526] border border-white/5 rounded-2xl p-6">
           <EquityChartWrapper data={stats.equityCurve} />
+        </div>
+      </section>
+
+      {/* ── Tier Breakdown ── */}
+      <section className="px-4 sm:px-6 pb-12 max-w-5xl mx-auto">
+        <SectionHeading
+          badge="By Strategy"
+          title="Tier "
+          highlight="Breakdown"
+          centered={false}
+        />
+        <TierBreakdown tiers={stats.tierBreakdown} />
+      </section>
+
+      {/* ── Signals ── */}
+      <section className="px-4 sm:px-6 pb-12 max-w-5xl mx-auto">
+        <SectionHeading
+          badge="Signal Activity"
+          title="Recent "
+          highlight="Signals"
+          centered={false}
+        />
+        <div className="bg-[#0d1526] border border-white/5 rounded-2xl p-6">
+          <SignalFeed signals={stats.recentSignals} queued={stats.queuedSetups} />
         </div>
       </section>
 
