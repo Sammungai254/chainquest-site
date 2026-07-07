@@ -10,6 +10,8 @@ import TierBreakdown from "@/components/bot/TierBreakdown";
 import SignalFeed from "@/components/bot/SignalFeed";
 import type { BotStats } from "@/app/api/bot-stats/route";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Live Trading Bot",
   description:
@@ -128,7 +130,7 @@ export default async function BotPage() {
           highlight="Breakdown"
           centered={false}
         />
-        <TierBreakdown tiers={stats.tierBreakdown} />
+        <TierBreakdown tiers={stats.tierBreakdown ?? []} />
       </section>
 
       {/* ── Signals ── */}
@@ -140,7 +142,7 @@ export default async function BotPage() {
           centered={false}
         />
         <div className="bg-[#0d1526] border border-white/5 rounded-2xl p-6">
-          <SignalFeed signals={stats.recentSignals} queued={stats.queuedSetups} />
+          <SignalFeed signals={stats.recentSignals ?? []} queued={stats.queuedSetups ?? []} />
         </div>
       </section>
 
