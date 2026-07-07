@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     description:
       "Software, business systems, GIS & AI integration — built in Nairobi, plus Web3 education. 50+ clients served across East Africa.",
     // Image is auto-wired from app/opengraph-image.tsx. Don't redeclare
-    // `images` here or the static trainer.jpg will override the dynamic
+    // `images` here or a static image would override the dynamic
     // 1200×630 share card.
   },
   twitter: {
